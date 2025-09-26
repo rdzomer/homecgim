@@ -33,7 +33,7 @@ export default function PanelViewPage() {
 
   if (panel === null) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-center">
+      <div className="flex-1 flex flex-col items-center justify-center text-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
         <p className="text-muted-foreground">Loading Panel...</p>
       </div>
@@ -42,7 +42,7 @@ export default function PanelViewPage() {
 
   if (panel === undefined) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-center">
+      <div className="flex-1 flex flex-col items-center justify-center text-center">
         <h2 className="text-2xl font-bold">Panel Not Found</h2>
         <p className="text-muted-foreground">
           The panel you are looking for does not exist or has been deleted.
@@ -52,7 +52,7 @@ export default function PanelViewPage() {
   }
 
   return (
-    <div className="w-full h-full bg-white">
+    <div className="flex-1 w-full h-full bg-white">
       <iframe
         title={panel.name}
         srcDoc={panel.htmlContent}
