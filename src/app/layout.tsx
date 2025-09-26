@@ -1,39 +1,28 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { cn } from '@/lib/utils';
-import { Toaster } from '@/components/ui/toaster';
-import { AuthProvider } from '@/hooks/use-auth';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import { PanelsProvider } from '@/hooks/use-panels';
 
-export const metadata: Metadata = {
-  title: 'Aplicações CGIM',
-  description: 'Portal de acesso para as aplicações da CGIM.',
-};
-
-export default function RootLayout({
+export default function PanelLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body
-        className={cn(
-          'min-h-screen bg-background font-body antialiased flex flex-col'
-        )}
-      >
-        <AuthProvider>
-          <main className="flex-1 flex flex-col">{children}</main>
-          <Toaster />
-        </AuthProvider>
-      </body>
-    </html>
+    <PanelsProvider>
+      <div className="flex flex-col h-screen bg-background">
+        <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
+          <div className="container flex h-16 items-center">
+            <Button asChild variant="ghost" className="-ml-4">
+              <Link href="/dashboard" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                <span>Voltar aos Painéis</span>
+              </Link>
+            </Button>
+          </div>
+        </header>
+        <main className="flex-1 flex flex-col overflow-hidden">{children}</main>
+      </div>
+    </PanelsProvider>
   );
 }

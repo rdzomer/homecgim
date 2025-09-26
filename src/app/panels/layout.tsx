@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { AppLogo } from '@/components/icons';
 import { PanelsProvider } from '@/hooks/use-panels';
 
 export default function PanelLayout({
@@ -11,7 +10,7 @@ export default function PanelLayout({
 }) {
   return (
     <PanelsProvider>
-      <div className="flex flex-col flex-1 bg-background">
+      <div className="flex flex-col h-screen bg-background">
         <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
           <div className="container flex h-16 items-center">
             <Button asChild variant="ghost" className="-ml-4">
@@ -22,7 +21,7 @@ export default function PanelLayout({
             </Button>
           </div>
         </header>
-        <main className="flex-1 overflow-hidden">{children}</main>
+        <main className="flex-1 flex flex-col overflow-hidden">{children}</main>
       </div>
     </PanelsProvider>
   );
