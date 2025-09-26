@@ -47,7 +47,7 @@ export default function PanelViewPage() {
   }
 
   return (
-    <div className="flex-1 w-full h-full">
+    <div className="w-full h-full">
       <iframe
         title={panel.name}
         srcDoc={panel.htmlContent}
