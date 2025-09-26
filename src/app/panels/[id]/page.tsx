@@ -19,17 +19,12 @@ export default function PanelViewPage() {
   }, [params.id, getPanelById]);
 
   useEffect(() => {
-    // If panels are still loading from firestore, do nothing
     if (loading) {
-      setPanel(null); // Set to loading state
+      setPanel(null);
       return;
     }
-    
-    // If panels are loaded, find the specific one
     fetchPanel();
-
   }, [params.id, panels, loading, fetchPanel]);
-
 
   if (panel === null) {
     return (
@@ -52,7 +47,7 @@ export default function PanelViewPage() {
   }
 
   return (
-    <div className="flex-1 w-full h-full bg-white">
+    <div className="flex-1 w-full h-full">
       <iframe
         title={panel.name}
         srcDoc={panel.htmlContent}

@@ -7,9 +7,7 @@ export default function DashboardLayout({
 }) {
   return (
     <PanelsProvider>
-      <div className="flex flex-col flex-1 bg-background">
-        {children}
-      </div>
+      <div className="flex flex-col flex-1 bg-background">{children}</div>
     </PanelsProvider>
   );
 }
