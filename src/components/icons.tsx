@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-import { Cog, Gem, MoreHorizontal, Trees, PanelTop, BookCopy } from 'lucide-react';
+import { Cog, Gem, MoreHorizontal, Trees, PanelTop, BookCopy, FileText } from 'lucide-react';
 
 export function HydrogenIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -24,4 +24,4 @@ export function HydrogenIcon(props: SVGProps<SVGSVGElement>) {
 
 export const AppLogo = PanelTop;
 
-export { Cog, Gem, MoreHorizontal, Trees, BookCopy };
+export { Cog, Gem, MoreHorizontal, Trees, BookCopy, FileText };

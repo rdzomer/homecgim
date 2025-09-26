@@ -23,7 +23,7 @@ export type GeneratePanelDescriptionInput = z.infer<
 const GeneratePanelDescriptionOutputSchema = z.object({
   description: z
     .string()
-    .describe('A brief description of the HTML panel.'),
+    .describe('Uma breve descrição do painel HTML.'),
 });
 export type GeneratePanelDescriptionOutput = z.infer<
   typeof GeneratePanelDescriptionOutputSchema
@@ -39,11 +39,11 @@ const prompt = ai.definePrompt({
   name: 'generatePanelDescriptionPrompt',
   input: {schema: GeneratePanelDescriptionInputSchema},
   output: {schema: GeneratePanelDescriptionOutputSchema},
-  prompt: `You are an expert at summarizing HTML content into brief, informative descriptions.
+  prompt: `Você é um especialista em resumir conteúdo HTML em descrições breves e informativas.
 
-  Please analyze the following HTML content and create a concise description that captures its main purpose and key data points.
+  Por favor, analise o conteúdo HTML a seguir e crie uma descrição concisa que capture seu propósito principal e os principais pontos de dados.
 
-  HTML Content: {{{htmlContent}}}`,
+  Conteúdo HTML: {{{htmlContent}}}`,
 });
 
 const generatePanelDescriptionFlow = ai.defineFlow(
