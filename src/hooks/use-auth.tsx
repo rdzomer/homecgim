@@ -7,7 +7,7 @@ import {
   useEffect,
   ReactNode,
 } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, signInWithCustomToken, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 
@@ -30,6 +30,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     });
     return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const ALLOWED = ['http://localhost:3000', 'https://portalcgim.netlify.app'];
+    const handler = async (event: MessageEvent) => {
+      if (!ALLOWED.includes(event.origin)) return;
+      if (event.data?.type !== 'PORTAL_AUTH' || !event.data.customToken) return;
+      try {
+        await signInWithCustomToken(auth, event.data.customToken);
+      } catch (e) {
+        console.warn('[SSO] signInWithCustomToken failed:', e);
+      }
+    };
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
   }, []);
   
   const signOut = async () => {
