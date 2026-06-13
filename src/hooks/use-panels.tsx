@@ -19,7 +19,6 @@ import {
 } from 'firebase/firestore';
 import { firestore } from '@/lib/firebase';
 import type { Panel, Category } from '@/lib/types';
-import { generatePanelDescription } from '@/ai/flows/generate-panel-description';
 import { useToast } from './use-toast';
 import { useAuth } from './use-auth';
 
@@ -92,13 +91,9 @@ export function PanelsProvider({ children }: { children: ReactNode }) {
       }
 
       try {
-        const { description } = await generatePanelDescription({
-          htmlContent: panelData.htmlContent,
-        });
-
         const newPanelData = {
           ...panelData,
-          description,
+          description: '',
           userId: user.uid,
           createdAt: new Date().toISOString(),
         };

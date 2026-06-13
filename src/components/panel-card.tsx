@@ -61,7 +61,7 @@ export function PanelCard({ panel }: PanelCardProps) {
       <Card className="flex flex-col h-full bg-card hover:shadow-lg transition-shadow duration-300">
         <CardHeader>
           <div className="flex justify-between items-start">
-            <Link href={`/panels/${panel.id}`} className="flex-1">
+            <Link href={`/panels?id=${panel.id}`} className="flex-1">
               <CardTitle className="text-lg font-bold hover:text-primary transition-colors">
                 {panel.name}
               </CardTitle>
